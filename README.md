@@ -44,29 +44,16 @@ The `difit` package and its `default` alias are exposed for `x86_64-linux`, `aar
 
 ## Development
 
-Enter the [devenv](https://devenv.sh/) shell:
-
-```console
-nix develop --no-pure-eval
-```
-
-With direnv and nix-direnv installed, the shell can be loaded automatically:
+Install [devenv](https://devenv.sh/) and [direnv](https://direnv.net/), enable direnv's shell hook, then allow this repository's `.envrc` once:
 
 ```console
 direnv allow
 ```
 
-Install and run the [prek](https://github.com/j178/prek) hooks:
+The devenv environment is loaded automatically when you enter the directory and unloaded when you leave it.
+
+Install the [prek](https://github.com/j178/prek) hooks:
 
 ```console
 prek install
-prek run --all-files
-```
-
-Run the full validation manually:
-
-```console
-nix fmt flake.nix packages/difit.nix
-nix flake check --no-pure-eval
-gitleaks git --redact .
 ```

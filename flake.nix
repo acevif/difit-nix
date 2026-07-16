@@ -7,18 +7,11 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-    devenv.url = "github:cachix/devenv";
-    devenv-root = {
-      url = "file+file:///dev/null";
-      flake = false;
-    };
   };
 
   outputs =
     inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ inputs.devenv.flakeModule ];
-
       systems = [
         "x86_64-linux"
         "aarch64-linux"
@@ -27,7 +20,7 @@
       ];
 
       perSystem =
-        { config, pkgs, ... }:
+        { pkgs, ... }:
         let
           difit = pkgs.callPackage ./packages/difit.nix { };
         in
@@ -38,20 +31,6 @@
           };
 
           formatter = pkgs.nixfmt;
-
-          devenv.shells.default = {
-            name = "difit-nix";
-            packages = [
-              config.packages.default
-              pkgs.gitleaks
-              pkgs.prek
-            ];
-            enterShell = ''
-              if [ ! -f .git/hooks/pre-commit ]; then
-                printf '%s\n' 'warning: prek hooks are not installed; run `prek install` to install them.' >&2
-              fi
-            '';
-          };
         };
     };
 }

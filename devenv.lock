@@ -1,22 +1,19 @@
 {
   "nodes": {
-    "flake-parts": {
-      "inputs": {
-        "nixpkgs-lib": [
-          "nixpkgs"
-        ]
-      },
+    "devenv": {
       "locked": {
-        "lastModified": 1782949081,
-        "narHash": "sha256-vp6Y/Grm98ESt6ceOkWiHWyZRDV3J1RID4w+6NWK9yA=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "17c9d6cdfc60c64f4ee8d306f9bc0b4ccb51481e",
+        "dir": "src/modules",
+        "lastModified": 1784142617,
+        "narHash": "sha256-mN/bY/kthTv86mIVH4trz6NJAfRglO2x4wImvTGkFZ8=",
+        "owner": "cachix",
+        "repo": "devenv",
+        "rev": "4ed83c00354d5a6b4cece8aa8c55028b4e4421e4",
         "type": "github"
       },
       "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
+        "dir": "src/modules",
+        "owner": "cachix",
+        "repo": "devenv",
         "type": "github"
       }
     },
@@ -38,7 +35,7 @@
     },
     "root": {
       "inputs": {
-        "flake-parts": "flake-parts",
+        "devenv": "devenv",
         "nixpkgs": "nixpkgs"
       }
     }
