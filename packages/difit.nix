@@ -15,27 +15,23 @@ let
   sources = pkgs.callPackage ./_sources/generated.nix { };
   version = lib.removePrefix "v" sources.difit.version;
 in
-assert version == sources.difit-npm.version;
 stdenv.mkDerivation (finalAttrs: {
   pname = "difit";
   inherit version;
 
   src = sources.difit.src;
-  npmPackage = sources.difit-npm.src;
 
   pnpmWorkspaces = [ "difit" ];
-  pnpmInstallFlags = [ "--production" ];
   pnpmDeps = fetchPnpmDeps {
     inherit (finalAttrs)
       pname
       version
       src
       pnpmWorkspaces
-      pnpmInstallFlags
       ;
     pnpm = pnpm_10;
     fetcherVersion = 4;
-    hash = "sha256-CGmYSEbTS3JgVcdxRot8RnYW9FUYQHvwp1nNI/zUM94=";
+    hash = "sha256-cRwlmoYGB0yxrBo3DGh/4DwvmnJhoQXYO3o812uy30k=";
   };
 
   nativeBuildInputs = [
@@ -45,14 +41,23 @@ stdenv.mkDerivation (finalAttrs: {
     pnpmConfigHook
   ];
 
-  dontBuild = true;
+  buildPhase = ''
+    runHook preBuild
+
+    pnpm run build
+
+    runHook postBuild
+  '';
 
   installPhase = ''
     runHook preInstall
 
     mkdir -p $out/lib/node_modules/difit $out/bin
-    tar -xzf ${finalAttrs.npmPackage}
-    cp -R package/dist package/package.json node_modules $out/lib/node_modules/difit/
+    cp -R dist package.json pnpm-lock.yaml pnpm-workspace.yaml $out/lib/node_modules/difit/
+
+    pushd $out/lib/node_modules/difit
+    pnpm install --prod --offline --frozen-lockfile --ignore-scripts
+    popd
 
     makeWrapper ${lib.getExe nodejs_24} $out/bin/difit \
       --add-flags "$out/lib/node_modules/difit/dist/cli/index.js" \

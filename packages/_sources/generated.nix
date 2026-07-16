@@ -17,12 +17,4 @@
       sha256 = "sha256-AT2dUT14+yfMLxcJdJC/CI28RfyElsoa97vxUIMjUo0=";
     };
   };
-  difit-npm = {
-    pname = "difit-npm";
-    version = "5.0.8";
-    src = fetchurl {
-      url = "https://registry.npmjs.org/difit/-/difit-5.0.8.tgz";
-      sha256 = "sha256-RGXJlgKComDU4xcxZWkYD84kMM5fR1oM1XsHhpyCvA0=";
-    };
-  };
 }

@@ -19,20 +19,5 @@
             "type": "github"
         },
         "version": "v5.0.8"
-    },
-    "difit-npm": {
-        "cargoLock": null,
-        "date": null,
-        "extract": null,
-        "name": "difit-npm",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-RGXJlgKComDU4xcxZWkYD84kMM5fR1oM1XsHhpyCvA0=",
-            "type": "url",
-            "url": "https://registry.npmjs.org/difit/-/difit-5.0.8.tgz"
-        },
-        "version": "5.0.8"
     }
 }

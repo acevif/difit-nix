@@ -10,6 +10,8 @@ Run difit:
 nix run github:acevif/difit-nix
 ```
 
+The initial Nix build may take around 20 minutes.
+
 Install it into your profile:
 
 ```console
