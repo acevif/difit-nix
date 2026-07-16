@@ -10,26 +10,22 @@
   pnpmConfigHook,
   git,
   gh,
-  version,
-  sourceHash,
-  npmHash,
-  pnpmDepsHash,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "difit";
-  inherit version;
+  version = "5.0.8";
 
   src = fetchFromGitHub {
     owner = "yoshiko-pg";
     repo = "difit";
     tag = "v${finalAttrs.version}";
-    hash = sourceHash;
+    hash = "sha256-AT2dUT14+yfMLxcJdJC/CI28RfyElsoa97vxUIMjUo0=";
   };
 
   npmPackage = fetchurl {
     url = "https://registry.npmjs.org/difit/-/difit-${finalAttrs.version}.tgz";
-    hash = npmHash;
+    hash = "sha512-4wraDkhacN6VFdFm57GP+0qtimu0vnxgZ3hyVjgVEoU6r4xkH2B/vZoLa0XePYzbIhyZ/xPHYFn6WmVk8OVPCw==";
   };
 
   pnpmWorkspaces = [ "difit" ];
@@ -44,7 +40,7 @@ stdenv.mkDerivation (finalAttrs: {
       ;
     pnpm = pnpm_10;
     fetcherVersion = 4;
-    hash = pnpmDepsHash;
+    hash = "sha256-CGmYSEbTS3JgVcdxRot8RnYW9FUYQHvwp1nNI/zUM94=";
   };
 
   nativeBuildInputs = [
