@@ -7,13 +7,13 @@
 Run difit:
 
 ```console
-nix run 'github:acevif/difit-nix#difit'
+nix run github:acevif/difit-nix
 ```
 
 Install it into your profile:
 
 ```console
-nix profile add 'github:acevif/difit-nix#difit'
+nix profile add github:acevif/difit-nix
 ```
 
 Or use it as a flake input:
