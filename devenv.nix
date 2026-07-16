@@ -3,6 +3,7 @@
 {
   packages = [
     pkgs.gitleaks
+    pkgs.nvfetcher
     pkgs.prek
   ];
 

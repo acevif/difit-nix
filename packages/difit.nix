@@ -1,8 +1,7 @@
 {
   lib,
+  pkgs,
   stdenv,
-  fetchFromGitHub,
-  fetchurl,
   fetchPnpmDeps,
   makeWrapper,
   nodejs_24,
@@ -12,21 +11,17 @@
   gh,
 }:
 
+let
+  sources = pkgs.callPackage ./_sources/generated.nix { };
+  version = lib.removePrefix "v" sources.difit.version;
+in
+assert version == sources.difit-npm.version;
 stdenv.mkDerivation (finalAttrs: {
   pname = "difit";
-  version = "5.0.8";
+  inherit version;
 
-  src = fetchFromGitHub {
-    owner = "yoshiko-pg";
-    repo = "difit";
-    tag = "v${finalAttrs.version}";
-    hash = "sha256-AT2dUT14+yfMLxcJdJC/CI28RfyElsoa97vxUIMjUo0=";
-  };
-
-  npmPackage = fetchurl {
-    url = "https://registry.npmjs.org/difit/-/difit-${finalAttrs.version}.tgz";
-    hash = "sha512-4wraDkhacN6VFdFm57GP+0qtimu0vnxgZ3hyVjgVEoU6r4xkH2B/vZoLa0XePYzbIhyZ/xPHYFn6WmVk8OVPCw==";
-  };
+  src = sources.difit.src;
+  npmPackage = sources.difit-npm.src;
 
   pnpmWorkspaces = [ "difit" ];
   pnpmInstallFlags = [ "--production" ];

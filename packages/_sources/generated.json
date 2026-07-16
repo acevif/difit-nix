@@ -1,0 +1,38 @@
+{
+    "difit": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "difit",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "yoshiko-pg",
+            "repo": "difit",
+            "rev": "v5.0.8",
+            "sha256": "sha256-AT2dUT14+yfMLxcJdJC/CI28RfyElsoa97vxUIMjUo0=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v5.0.8"
+    },
+    "difit-npm": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "difit-npm",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-RGXJlgKComDU4xcxZWkYD84kMM5fR1oM1XsHhpyCvA0=",
+            "type": "url",
+            "url": "https://registry.npmjs.org/difit/-/difit-5.0.8.tgz"
+        },
+        "version": "5.0.8"
+    }
+}

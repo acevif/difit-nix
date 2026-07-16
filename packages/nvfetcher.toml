@@ -1,0 +1,8 @@
+[difit]
+src.github = "yoshiko-pg/difit"
+fetch.github = "yoshiko-pg/difit"
+
+[difit-npm]
+src.github = "yoshiko-pg/difit"
+src.prefix = "v"
+fetch.url = "https://registry.npmjs.org/difit/-/difit-$ver.tgz"
